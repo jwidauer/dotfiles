@@ -37,13 +37,22 @@ lvim.builtin.which_key.mappings["t"] = {
 -- Enable more which-key mappings
 lvim.builtin.which_key.setup.plugins.marks = true
 lvim.builtin.which_key.setup.plugins.registers = true
-lvim.builtin.which_key.setup.plugins.presets.operators = true
-lvim.builtin.which_key.setup.plugins.presets.motions = true
-lvim.builtin.which_key.setup.plugins.presets.text_objects = true
-lvim.builtin.which_key.setup.plugins.presets.windows = true
-lvim.builtin.which_key.setup.plugins.presets.nav = true
-lvim.builtin.which_key.setup.plugins.presets.z = true
-lvim.builtin.which_key.setup.plugins.presets.g = true
+lvim.builtin.which_key.setup.plugins.presets = {
+  operators = true,
+  motions = true,
+  text_objects = true,
+  windows = true,
+  nav = true,
+  z = true,
+  g = true,
+}
+
+-- Modify telescope mappings
+local actions = require("lvim.utils.modules").require_on_exported_call("telescope.actions")
+lvim.builtin.telescope.defaults.mappings.i["<Tab>"] = actions.move_selection_next
+lvim.builtin.telescope.defaults.mappings.i["<S-Tab>"] = actions.move_selection_previous
+lvim.builtin.telescope.defaults.mappings.n["<Tab>"] = actions.move_selection_next
+lvim.builtin.telescope.defaults.mappings.n["<S-Tab>"] = actions.move_selection_previous
 
 ---- Plugins
 lvim.plugins = {
