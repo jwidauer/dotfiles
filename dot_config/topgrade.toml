@@ -1,5 +1,5 @@
 # Don't ask for confirmations
-#assume_yes = true
+assume_yes = true
 
 # Disable specific steps - same options as the command line flag
 #disable = ["system", "emacs"]
@@ -42,7 +42,7 @@
 # display_time = true
 
 # Cleanup temporary or old files
-#cleanup = true
+cleanup = true
 
 # Skip sending a notification at the end of a run
 #skip_notify = true
@@ -102,8 +102,8 @@ display_preamble = false
 #nix_arguments = "--flake"
 
 [python]
-#enable_pip_review = true   ###disabled by default
-#enable_pipupgrade = true   ###disabled by default
+enable_pip_review = true   ###disabled by default
+enable_pipupgrade = true   ###disabled by default
 
 [windows]
 # Manually select Windows updates
@@ -123,7 +123,7 @@ display_preamble = false
 
 [firmware]
 # Offer to update firmware; if false just check for and display available updates
-#upgrade = true
+upgrade = true
 
 [flatpak]
 # Use sudo for updating the system-wide installation
