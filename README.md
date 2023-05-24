@@ -4,4 +4,4 @@ Jakob Widauer's dotfiles, managed with [`chezmoi`](https://github.com/twpayne/ch
 
 Install them with:
 
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jwidauer
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@github.com:jwidauer/dotfiles.git
