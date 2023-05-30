@@ -90,6 +90,158 @@ lvim.plugins = {
         style = "darker",
       })
     end,
+  },
+  {
+    "kevinhwang91/nvim-bqf",
+    event = { "BufRead", "BufNew" },
+    config = function()
+      require("bqf").setup({
+        auto_enable = true,
+        preview = {
+          win_height = 12,
+          win_vheight = 12,
+          delay_syntax = 80,
+          border_chars = { "┃", "┃", "━", "━", "┏", "┓", "┗", "┛", "█" },
+        },
+        func_map = {
+          vsplit = "",
+          ptogglemode = "z,",
+          stoggleup = "",
+        },
+        filter = {
+          fzf = {
+            action_for = { ["ctrl-s"] = "split" },
+            extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+          },
+        },
+      })
+    end,
+  },
+  {
+    "f-person/git-blame.nvim",
+    event = "BufRead",
+    config = function()
+      vim.cmd "highlight default link gitblame SpecialComment"
+      vim.g.gitblame_enabled = 0
+    end,
+  },
+  {
+    "simrat39/symbols-outline.nvim",
+    config = function()
+      require('symbols-outline').setup()
+    end
+  },
+  {
+    "karb94/neoscroll.nvim",
+    event = "WinScrolled",
+    config = function()
+      require('neoscroll').setup({
+        -- All these keys will be mapped to their corresponding default scrolling animation
+        mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
+          '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+        hide_cursor = true,          -- Hide cursor while scrolling
+        stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+        use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+        respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+        cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+        easing_function = nil,       -- Default easing function
+        pre_hook = nil,              -- Function to run before the scrolling animation starts
+        post_hook = nil,             -- Function to run after the scrolling animation ends
+      })
+    end
+  },
+  {
+    "tpope/vim-surround",
+  },
+  {
+    "gelguy/wilder.nvim",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      {
+        "romgrk/fzy-lua-native",
+        build = "make",
+      }
+    },
+    event = "CmdlineEnter",
+    config = function()
+      local wilder = require('wilder')
+      wilder.setup({ modes = { ':', '/', '?' } })
+
+      wilder.set_option('pipeline', {
+        wilder.branch(
+          wilder.python_file_finder_pipeline({
+            file_command = function(ctx, arg)
+              if string.find(arg, '.') ~= nil then
+                return { 'fdfind', '-tf', '-H' }
+              else
+                return { 'fdfind', '-tf' }
+              end
+            end,
+            dir_command = { 'fd', '-td' },
+            filters = { 'cpsm_filter' },
+          }),
+          wilder.substitute_pipeline({
+            pipeline = wilder.python_search_pipeline({
+              skip_cmdtype_check = 1,
+              pattern = wilder.python_fuzzy_pattern({
+                start_at_boundary = 0,
+              }),
+            }),
+          }),
+          wilder.cmdline_pipeline({
+            fuzzy = 2,
+            fuzzy_filter = wilder.lua_fzy_filter(),
+          }),
+          {
+            wilder.check(function(ctx, x) return x == '' end),
+            wilder.history(),
+          },
+          wilder.python_search_pipeline({
+            pattern = wilder.python_fuzzy_pattern({
+              start_at_boundary = 0,
+            }),
+          })
+        ),
+      })
+
+      local highlighters = {
+        wilder.pcre2_highlighter(),
+        wilder.lua_fzy_highlighter(),
+      }
+
+      local popupmenu_renderer = wilder.popupmenu_renderer(
+        wilder.popupmenu_border_theme({
+          border = 'rounded',
+          empty_message = wilder.popupmenu_empty_message_with_spinner(),
+          highlighter = highlighters,
+          left = {
+            ' ',
+            wilder.popupmenu_devicons(),
+            wilder.popupmenu_buffer_flags({
+              flags = ' a + ',
+              icons = { ['+'] = '', a = '', h = '' },
+            }),
+          },
+          right = {
+            ' ',
+            wilder.popupmenu_scrollbar(),
+          },
+        })
+      )
+
+      local wildmenu_renderer = wilder.wildmenu_renderer({
+        highlighter = highlighters,
+        separator = ' · ',
+        left = { ' ', wilder.wildmenu_spinner(), ' ' },
+        right = { ' ', wilder.wildmenu_index() },
+      })
+
+      wilder.set_option('renderer', wilder.renderer_mux({
+        [':'] = popupmenu_renderer,
+        ['/'] = wildmenu_renderer,
+        substitute = wildmenu_renderer,
+      }))
+    end
   }
 }
 
@@ -98,8 +250,16 @@ lvim.plugins = {
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "clangd" })
 local capabilities = require("lvim.lsp").common_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
-local opts = { capabilities = capabilities }
-require("lvim.lsp.manager").setup("clangd", opts)
+require("lvim.lsp.manager").setup("clangd", { capabilities = capabilities })
+
+---- Formatters
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+  {
+    exe = "black",
+    filetypes = { "python" },
+  },
+})
 
 ---- Appearance
 -- Status line
