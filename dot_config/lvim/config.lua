@@ -3,7 +3,7 @@ vim.opt.timeoutlen = 100
 vim.opt.relativenumber = true
 
 require("formatters")
-require("keymappings")
+require("keymaps")
 require("lsp")
 require("ui")
 
