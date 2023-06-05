@@ -6,3 +6,5 @@ formatters.setup({
     filetypes = { "python" },
   },
 })
+
+lvim.format_on_save = true
