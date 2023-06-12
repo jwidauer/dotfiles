@@ -17,13 +17,12 @@ local M = {
         wilder.python_file_finder_pipeline({
           file_command = function(_, arg)
             if string.find(arg, '.') ~= nil then
-              return { 'fdfind', '-tf', '-H' }
+              return { 'fd', '-tf', '-H' }
             else
-              return { 'fdfind', '-tf' }
+              return { 'fd', '-tf' }
             end
           end,
           dir_command = { 'fd', '-td' },
-          filters = { 'cpsm_filter' },
         }),
         wilder.substitute_pipeline({
           pipeline = wilder.python_search_pipeline({
