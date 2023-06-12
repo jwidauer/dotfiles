@@ -13,7 +13,6 @@ local plugins = {
   "git-blame",
   "leap",
   "minimap",
-  "neoscroll",
   "nvim-bqf",
   "onedark",
   "rust-tools",
