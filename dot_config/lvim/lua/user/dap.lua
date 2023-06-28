@@ -1,24 +1,29 @@
 local dap = require("dap")
 
 -- Add adapters
-dap.adapters.lldb = {
-  type = "executable",
-  command = "/usr/bin/lldb-vscode-14",
-  name = "lldb",
+dap.adapters.cppdbg = {
+  id = 'cppdbg',
+  type = 'executable',
+  command = '/home/jakob/.local/bin/open_debug/OpenDebugAD7'
 }
 
 -- Add configurations
 dap.configurations.cpp = {
   {
     name = "Launch",
-    type = "lldb",
+    type = "cppdbg",
     request = "launch",
     program = function()
-      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,
-    cwd = "${workspaceFolder}",
+    cwd = '${workspaceFolder}',
     stopOnEntry = false,
-    args = {},
-    runInTerminal = false,
+    setupCommands = {
+      {
+        description = "Enable pretty-printing for gdb",
+        text = "-enable-pretty-printing",
+        ignoreFailures = false
+      }
+    }
   },
 }

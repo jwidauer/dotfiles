@@ -6,6 +6,10 @@ lvim.keys.visual_mode[";"] = { ":", { noremap = true, silent = false } }
 lvim.keys.normal_mode["<TAB>"] = { ":BufferLineCycleNext<CR>", { noremap = true, silent = true } }
 lvim.keys.normal_mode["<S-TAB>"] = { ":BufferLineCyclePrev<CR>", { noremap = true, silent = true } }
 
+-- Fix jumplist navigation
+lvim.keys.normal_mode["<C-p>"] = { "<C-o>", { noremap = true, silent = true } }
+lvim.keys.normal_mode["<C-n>"] = { "<C-i>", { noremap = true, silent = true } }
+
 -- U = undo
 lvim.keys.normal_mode["U"] = { "<C-r>", { noremap = true, silent = true } }
 
