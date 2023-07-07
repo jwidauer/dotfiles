@@ -13,6 +13,12 @@ lvim.keys.normal_mode["<C-n>"] = { "<C-i>", { noremap = true, silent = true } }
 -- U = undo
 lvim.keys.normal_mode["U"] = { "<C-r>", { noremap = true, silent = true } }
 
+-- Navigate in insert mode
+lvim.keys.insert_mode["<C-h>"] = { "<Left>", { noremap = true, silent = true } }
+lvim.keys.insert_mode["<C-j>"] = { "<Down>", { noremap = true, silent = true } }
+lvim.keys.insert_mode["<C-k>"] = { "<Up>", { noremap = true, silent = true } }
+lvim.keys.insert_mode["<C-l>"] = { "<Right>", { noremap = true, silent = true } }
+
 -- Helix style navigation
 -- normal
 lvim.lsp.buffer_mappings.normal_mode["gh"] = { "0", "Goto start of line" }
