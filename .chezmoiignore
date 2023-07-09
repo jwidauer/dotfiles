@@ -1,2 +1,8 @@
 README.md
 LICENSE
+{{ if ne .chezmoi.os "linux" }}
+.config/.wezterm.lua
+{{ end }}
+{{ if ne .chezmoi.os "windows" }}
+C:/Users/{{ .chezmoi.username }}/wezterm.lua
+{{ end }}
