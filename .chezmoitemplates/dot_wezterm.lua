@@ -60,6 +60,7 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.scrollback_lines = 10000
 config.audible_bell = "Disabled"
 
 return config
