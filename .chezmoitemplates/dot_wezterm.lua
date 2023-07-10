@@ -8,7 +8,7 @@ end
 
 local wsl_domains = wezterm.default_wsl_domains()
 
-if wsl_domains then
+if wsl_domains and wsl_domains[1] then
   config.default_domain = wsl_domains[1].name
 end
 

@@ -4,5 +4,5 @@ LICENSE
 .config/.wezterm.lua
 {{ end }}
 {{ if ne .chezmoi.os "windows" }}
-C:/Users/{{ .chezmoi.username }}/wezterm.lua
+.wezterm.lua
 {{ end }}
