@@ -6,4 +6,11 @@ alias gcm='git commit -m'
 alias ga='git add'
 alias gd='git diff'
 alias gsu='git submodule update --init --recursive'
+
 alias code='code-insiders'
+
+alias ls='exa'
+alias ll='exa -alF'
+alias la='exa -a'
+alias l='exa -l'
+alias lh='exa -alhF'
