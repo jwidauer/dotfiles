@@ -6,37 +6,11 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- Configure wsl startup when running on Windows
 local wsl_domains = wezterm.default_wsl_domains()
-if wsl_domains then
+
+if wsl_domains and wsl_domains[1] then
   config.default_domain = wsl_domains[1].name
 end
-
--- Configure keybindings
-config.leader = { key = 'b', mods = 'CTRL', timeout_milliseconds = 1000 }
-
-local act = wezterm.action
-config.keys = {
-  { key = 'r', mods = 'LEADER', action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
-  { key = 'd', mods = 'LEADER', action = act.SplitVertical { domain = "CurrentPaneDomain" } },
-  { key = 'x', mods = 'LEADER', action = act.CloseCurrentPane { confirm = false } },
-  { key = 'n', mods = 'LEADER', action = act.SpawnTab("CurrentPaneDomain") },
-  { key = 'w', mods = 'LEADER', action = act.CloseCurrentTab { confirm = false } },
-  { key = '1', mods = 'LEADER', action = act.ActivateTab(0) },
-  { key = '2', mods = 'LEADER', action = act.ActivateTab(1) },
-  { key = '3', mods = 'LEADER', action = act.ActivateTab(2) },
-  { key = '4', mods = 'LEADER', action = act.ActivateTab(3) },
-  { key = '5', mods = 'LEADER', action = act.ActivateTab(4) },
-  { key = '6', mods = 'LEADER', action = act.ActivateTab(5) },
-  { key = '7', mods = 'LEADER', action = act.ActivateTab(6) },
-  { key = '8', mods = 'LEADER', action = act.ActivateTab(7) },
-  { key = '9', mods = 'LEADER', action = act.ActivateTab(8) },
-  { key = '0', mods = 'LEADER', action = act.ActivateTab(9) },
-  { key = 'h', mods = 'LEADER', action = act.ActivatePaneDirection("Left") },
-  { key = 'j', mods = 'LEADER', action = act.ActivatePaneDirection("Down") },
-  { key = 'k', mods = 'LEADER', action = act.ActivatePaneDirection("Up") },
-  { key = 'l', mods = 'LEADER', action = act.ActivatePaneDirection("Right") }
-}
 
 -- Configure color scheme
 config.color_scheme = "Google Dark (Gogh)"
@@ -86,6 +60,7 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.scrollback_lines = 10000
 config.audible_bell = "Disabled"
 
 return config
