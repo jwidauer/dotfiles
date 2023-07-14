@@ -42,10 +42,8 @@ config.keys = {
 config.color_scheme = "Google Dark (Gogh)"
 
 -- Configure font
-config.font = wezterm.font("CodeNewRoman Nerd Font")
-config.font_size = 11.0
+config.font_size = 10.0
 config.force_reverse_video_cursor = true
-config.line_height = 0.95
 
 -- Configure tab bar
 config.use_fancy_tab_bar = false
