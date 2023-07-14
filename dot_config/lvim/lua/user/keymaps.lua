@@ -2,22 +2,23 @@
 lvim.keys.normal_mode[";"] = { ":", { noremap = true, silent = false } }
 lvim.keys.visual_mode[";"] = { ":", { noremap = true, silent = false } }
 
+local opts = { noremap = true, silent = true }
 -- Easier way to switch between buffers
-lvim.keys.normal_mode["<TAB>"] = { ":BufferLineCycleNext<CR>", { noremap = true, silent = true } }
-lvim.keys.normal_mode["<S-TAB>"] = { ":BufferLineCyclePrev<CR>", { noremap = true, silent = true } }
+lvim.keys.normal_mode["<TAB>"] = { ":BufferLineCycleNext<CR>", opts }
+lvim.keys.normal_mode["<S-TAB>"] = { ":BufferLineCyclePrev<CR>", opts }
 
 -- Fix jumplist navigation
-lvim.keys.normal_mode["<C-p>"] = { "<C-o>", { noremap = true, silent = true } }
-lvim.keys.normal_mode["<C-n>"] = { "<C-i>", { noremap = true, silent = true } }
+lvim.keys.normal_mode["<C-p>"] = { "<C-o>", opts }
+lvim.keys.normal_mode["<C-n>"] = { "<C-i>", opts }
 
 -- U = undo
-lvim.keys.normal_mode["U"] = { "<C-r>", { noremap = true, silent = true } }
+lvim.keys.normal_mode["U"] = { "<C-r>", opts }
 
 -- Navigate in insert mode
-lvim.keys.insert_mode["<C-h>"] = { "<Left>", { noremap = true, silent = true } }
-lvim.keys.insert_mode["<C-j>"] = { "<Down>", { noremap = true, silent = true } }
-lvim.keys.insert_mode["<C-k>"] = { "<Up>", { noremap = true, silent = true } }
-lvim.keys.insert_mode["<C-l>"] = { "<Right>", { noremap = true, silent = true } }
+lvim.keys.insert_mode["<C-h>"] = { "<Left>", opts }
+lvim.keys.insert_mode["<C-j>"] = { "<Down>", opts }
+lvim.keys.insert_mode["<C-k>"] = { "<Up>", opts }
+lvim.keys.insert_mode["<C-l>"] = { "<Right>", opts }
 
 -- Helix style navigation
 -- normal
@@ -25,15 +26,19 @@ lvim.lsp.buffer_mappings.normal_mode["gh"] = { "0", "Goto start of line" }
 lvim.lsp.buffer_mappings.normal_mode["gs"] = { "^", "Goto start of line (non-blank)" }
 lvim.lsp.buffer_mappings.normal_mode["gl"] = { "$", "Goto end of line" }
 lvim.lsp.buffer_mappings.normal_mode["ge"] = { "G", "Goto last line" }
-lvim.lsp.buffer_mappings.normal_mode["gn"] = { "<cmd>BufferLineCycleNext<cr>", "Goto next buffer" }
-lvim.lsp.buffer_mappings.normal_mode["gp"] = { "<cmd>BufferLineCyclePrev<cr>", "Goto previous buffer" }
+lvim.keys.normal_mode["gh"] = { "0", opts }
+lvim.keys.normal_mode["gs"] = { "^", opts }
+lvim.keys.normal_mode["gl"] = { "$", opts }
+lvim.keys.normal_mode["ge"] = { "G", opts }
 -- visual
 lvim.lsp.buffer_mappings.visual_mode["gh"] = { "0", "Start of line" }
 lvim.lsp.buffer_mappings.visual_mode["gs"] = { "^", "Start of line (non-blank)" }
 lvim.lsp.buffer_mappings.visual_mode["gl"] = { "$", "End of line" }
 lvim.lsp.buffer_mappings.visual_mode["ge"] = { "G", "Last line" }
-lvim.lsp.buffer_mappings.visual_mode["gn"] = { "<cmd>BufferLineCycleNext<cr>", "Goto next buffer" }
-lvim.lsp.buffer_mappings.visual_mode["gp"] = { "<cmd>BufferLineCyclePrev<cr>", "Goto previous buffer" }
+lvim.keys.visual_mode["gh"] = { "0", opts }
+lvim.keys.visual_mode["gs"] = { "^", opts }
+lvim.keys.visual_mode["gl"] = { "$", opts }
+lvim.keys.visual_mode["ge"] = { "G", opts }
 
 -- Enable more which-key mappings
 lvim.builtin.which_key.setup.plugins.marks = true

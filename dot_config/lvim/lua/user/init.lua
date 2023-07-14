@@ -6,6 +6,7 @@ end
 
 require_modules("user",
   {
+    "autocommands",
     "dap",
     "formatters",
     "keymaps",
