@@ -10,7 +10,7 @@ lvim.autocommands = {
 
       if ft == 'cpp' then
         wk.register({
-          ['gh'] = { '<cmd>ClangdSwitchSourceHeader<cr>', 'Switch between source/header' },
+          ['go'] = { '<cmd>ClangdSwitchSourceHeader<cr>', 'Switch between source/header' },
         }, opts)
       end
     end
