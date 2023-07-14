@@ -8,7 +8,7 @@ end
 
 -- Configure wsl startup when running on Windows
 local wsl_domains = wezterm.default_wsl_domains()
-if wsl_domains then
+if wsl_domains and wsl_domains[1] then
   config.default_domain = wsl_domains[1].name
 end
 
@@ -86,6 +86,7 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.scrollback_lines = 10000
 config.audible_bell = "Disabled"
 
 return config
