@@ -5,6 +5,10 @@ formatters.setup({
     exe = "black",
     filetypes = { "python" },
   },
+  {
+    name = "markdownlint",
+    filetype = { "markdown" },
+  }
 })
 
 lvim.format_on_save = true

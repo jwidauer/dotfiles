@@ -5,6 +5,9 @@ local M = {
     require("copilot").setup({
       suggestion = {
         auto_trigger = true,
+      },
+      filetypes = {
+        ["*"] = true,
       }
     })
   end,
