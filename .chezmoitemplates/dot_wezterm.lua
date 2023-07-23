@@ -57,7 +57,7 @@ local function tab_title(tab_info)
   if title and #title > 0 then
     return title
   end
-  return '[' .. tab_info.tab_index .. ']'
+  return '[' .. (tab_info.tab_index + 1) .. ']'
 end
 
 wezterm.on(
