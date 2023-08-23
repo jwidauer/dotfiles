@@ -14,6 +14,7 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "clangd", "r
 -- Special setup for clangd
 local capabilities = require("lvim.lsp").common_capabilities()
 capabilities.offsetEncoding = { "utf-16" }
+-- lsp_manager.setup("clangd", { cmd = { "clangd", "--log=verbose" }, capabilities = capabilities })
 lsp_manager.setup("clangd", { capabilities = capabilities })
 
 -- Enable markdown filetype
@@ -22,3 +23,5 @@ if markdown_idx then
   table.remove(lvim.lsp.automatic_configuration.skipped_filetypes, markdown_idx)
 end
 lsp_manager.setup("marksman")
+
+-- vim.lsp.set_log_level("trace")
