@@ -16,6 +16,7 @@ local plugins = {
   "nvim-bqf",
   "onedark",
   "rust-tools",
+  "sonarlint",
   "symbols-outline",
   "trouble",
   "vim-surround",
