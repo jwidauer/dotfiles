@@ -4,7 +4,11 @@ local dap = require("dap")
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = '/home/jakob/.local/bin/open_debug/OpenDebugAD7'
+  -- Install 'cpptools' from mason
+  command = vim.fn.expand("$MASON/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"),
+  options = {
+    detached = false
+  }
 }
 
 -- Add configurations
@@ -25,5 +29,7 @@ dap.configurations.cpp = {
         ignoreFailures = false
       }
     }
-  },
+  }
 }
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
