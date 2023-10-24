@@ -5,7 +5,8 @@ dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
   -- Install 'cpptools' from mason
-  command = vim.fn.expand("$MASON/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"),
+  command = vim.fn.expand(lvim.builtin.mason.install_root_dir ..
+    "/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7"),
   options = {
     detached = false
   }
