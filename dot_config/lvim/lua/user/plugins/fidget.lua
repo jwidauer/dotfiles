@@ -2,8 +2,10 @@ local M = {
   "j-hui/fidget.nvim",
   config = function()
     require("fidget").setup({
-      text = {
-        spinner = "dots",
+      progress = {
+        display = {
+          progress_icon = { pattern = "dots", period = 1 }
+        }
       }
     })
   end,
