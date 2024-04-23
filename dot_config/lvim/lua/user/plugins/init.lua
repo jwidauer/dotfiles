@@ -15,7 +15,7 @@ local plugins = {
   "minimap",
   "nvim-bqf",
   "onedark",
-  "rust-tools",
+  "rustaceanvim",
   "sonarlint",
   "symbols-outline",
   "trouble",
