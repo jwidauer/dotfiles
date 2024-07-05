@@ -7,8 +7,6 @@ alias ga='git add'
 alias gd='git diff'
 alias gsu='git submodule update --init --recursive'
 
-alias code='code-insiders'
-
 # Use exa instead of ls
 alias ls='exa'
 alias ll='exa -alF'
