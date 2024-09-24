@@ -105,10 +105,12 @@ PATH="$HOME/.npm-global/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-export RUSTC_WRAPPER="$HOME/.cargo/bin/sccache"
 export VISUAL=lvim
 export EDITOR="$VISUAL"
+
+export GPG_TTY=$(tty)
+export NVM_DIR="$HOME/.nvm"
+export RUSTC_WRAPPER="$HOME/.cargo/bin/sccache"
 
 source ~/.bash-git-prompt/gitprompt.sh
 

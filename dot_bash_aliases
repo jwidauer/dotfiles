@@ -13,3 +13,8 @@ alias ll='eza -alF'
 alias la='eza -a'
 alias l='eza -l'
 alias lh='eza -alhF'
+
+# Add work specific aliases
+if [ -f ~/work/.bash_aliases ]; then
+    . ~/work/.bash_aliases
+fi
