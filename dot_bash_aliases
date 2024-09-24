@@ -7,9 +7,9 @@ alias ga='git add'
 alias gd='git diff'
 alias gsu='git submodule update --init --recursive'
 
-# Use exa instead of ls
-alias ls='exa'
-alias ll='exa -alF'
-alias la='exa -a'
-alias l='exa -l'
-alias lh='exa -alhF'
+# Use eza instead of ls
+alias ls='eza'
+alias ll='eza -alF'
+alias la='eza -a'
+alias l='eza -l'
+alias lh='eza -alhF'
