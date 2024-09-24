@@ -1,6 +1,9 @@
 local M = {
   "folke/trouble.nvim",
-  cmd = "TroubleToggle",
+  opts = {
+    focus = true,
+  },
+  cmd = "Trouble",
 }
 
 return M

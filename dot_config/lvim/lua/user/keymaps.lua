@@ -56,12 +56,12 @@ lvim.builtin.which_key.setup.plugins.presets = {
 -- Trouble mappings
 lvim.builtin.which_key.mappings["t"] = {
   name = "Diagnostics",
-  t = { "<cmd>TroubleToggle<cr>", "Trouble" },
-  w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace" },
-  d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Document" },
-  q = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
-  l = { "<cmd>TroubleToggle loclist<cr>", "Location list" },
-  r = { "<cmd>TroubleToggle lsp_references<cr>", "References" }
+  t = { "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", "Buffer" },
+  w = { "<cmd>Trouble diagnostics toggle<cr>", "Workspace" },
+  q = { "<cmd>Trouble qflist toggle<cr>", "Quickfix" },
+  l = { "<cmd>Trouble loclist toggle<cr>", "Location list" },
+  r = { "<cmd>Trouble lsp_references toggle<cr>", "References" },
+  s = { "<cmd>Trouble symbols toggle pinned=true win.relative=win win.position=right<cr>", "Symbols" }
 }
 
 -- Toggle relative line numbers

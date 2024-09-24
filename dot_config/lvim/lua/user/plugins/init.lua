@@ -12,12 +12,10 @@ local plugins = {
   "fidget",
   "flash",
   "git-blame",
-  "minimap",
   "nvim-bqf",
   "onedark",
   "rustaceanvim",
-  "sonarlint",
-  "symbols-outline",
+  -- "sonarlint",
   "trouble",
   "vim-surround",
   "wilder"

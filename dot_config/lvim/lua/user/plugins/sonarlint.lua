@@ -7,7 +7,7 @@ local M = {
     require("sonarlint").setup({
       server = {
         cmd = {
-          'sonarlint-language-server',
+          vim.fn.expand('$MASON/packages/sonarlint-language-server/sonarlint-language-server.cmd'),
           -- Ensure that sonarlint-language-server uses stdio channel
           '-stdio',
           '-analyzers',
