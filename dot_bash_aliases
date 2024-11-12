@@ -13,3 +13,6 @@ alias ll='eza -alF'
 alias la='eza -a'
 alias l='eza -l'
 alias lh='eza -alhF'
+
+# Use lvim easier
+alias v='lvim'
