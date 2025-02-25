@@ -77,5 +77,6 @@ lvim.builtin.telescope.defaults.mappings.i["<S-Tab>"] = actions.move_selection_p
 lvim.builtin.telescope.defaults.mappings.n["<Tab>"] = actions.move_selection_next
 lvim.builtin.telescope.defaults.mappings.n["<S-Tab>"] = actions.move_selection_previous
 
+lvim.builtin.which_key.vmappings["i"] = { "<cmd>lua vim.lsp.buf.format()<cr>", "Format selection" }
 lvim.lsp.buffer_mappings.visual_mode["<leader>i"] = { vim.lsp.buf.format, "Format selection" }
 lvim.keys.visual_mode["<leader>i"] = { vim.lsp.buf.format, opts }
