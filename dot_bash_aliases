@@ -5,6 +5,8 @@ alias gc='git commit'
 alias gcm='git commit -m'
 alias ga='git add'
 alias gd='git diff'
+alias gds='git diff --staged'
+alias glg='git lg'
 alias gsu='git submodule update --init --recursive'
 
 # Use eza instead of ls
