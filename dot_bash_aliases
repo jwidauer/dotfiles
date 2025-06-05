@@ -16,5 +16,5 @@ alias la='eza -a'
 alias l='eza -l'
 alias lh='eza -alhF'
 
-# Use lvim easier
-alias v='lvim'
+# Use nvim easier
+alias v='nvim'
