@@ -95,6 +95,10 @@ return {
         ["<A-2>"] = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "ToggleTerm vertical split" },
         ["<A-3>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm float" },
 
+        -- Move current line / block with Alt-j/k a la vscode.
+        ["<A-j>"] = ":m .+1<CR>==",
+        ["<A-k>"] = ":m .-2<CR>==",
+
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
@@ -115,12 +119,22 @@ return {
         -- Format selection
         ["<Leader>i"] = { vim.lsp.buf.format, desc = "Format selection" },
       },
+      x = {
+        -- Move current line / block with Alt-j/k ala vscode.
+        ["<A-j>"] = ":m '>+1<CR>gv-gv",
+        ["<A-k>"] = ":m '<-2<CR>gv-gv",
+      },
       i = {
         -- Navigate in insert mode
         ["<C-h>"] = { "<Left>" },
         ["<C-j>"] = { "<Down>" },
         ["<C-k>"] = { "<Up>" },
         ["<C-l>"] = { "<Right>" },
+
+        -- Move current line / block with Alt-j/k ala vscode.
+        ["<A-j>"] = "<Esc>:m .+1<CR>==gi",
+        -- Move current line / block with Alt-j/k ala vscode.
+        ["<A-k>"] = "<Esc>:m .-2<CR>==gi",
       },
       t = {
         ["<A-1>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
