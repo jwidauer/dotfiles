@@ -84,7 +84,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    . "$HOME"/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -100,7 +100,12 @@ fi
 
 # Add work specific profile
 if [ -f ~/work/.profile ]; then
-    . ~/work/.profile
+    . "$HOME"/work/.profile
+fi
+
+# Add scripts directory to PATH, if it exists
+if [ -d "$HOME"/scripts ]; then
+    PATH="$HOME/scripts:$PATH"
 fi
 
 GIT_PROMPT_ONLY_IN_REPO=1
