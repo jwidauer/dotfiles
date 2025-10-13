@@ -37,6 +37,14 @@ return {
           }, "\n"),
         },
       },
+      picker = {
+        previewers = {
+          diff = {
+            builtin = false,
+            cmd = { "delta" },
+          },
+        },
+      },
     },
   },
 

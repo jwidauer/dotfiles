@@ -10,6 +10,13 @@ return {
         accept = false,
       },
     },
+    filetypes = {
+      yaml = true,
+      markdown = true,
+      help = false,
+      gitcommit = true,
+      gitrebase = true,
+    },
   },
   specs = {
     {
