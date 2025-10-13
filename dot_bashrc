@@ -124,6 +124,7 @@ export RUSTC_WRAPPER="$HOME/.cargo/bin/sccache"
 
 source ~/.bash-git-prompt/gitprompt.sh
 
+eval "$(zoxide init bash)"
 eval "$(atuin init bash)"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
