@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# If there's no argument, grab the first git staged file
+INPUT_FILE="${1:-$(git diff --cached --name-only | head -n 1)}"
+
+# If there's still no input file, exit with an error
+if [ -z "$INPUT_FILE" ]; then
+  echo "Error: No input file provided."
+  echo "Usage: $0 <input-file>"
+  exit 1
+fi
+
+if out=$(git -c color.diff=always lg -- "$INPUT_FILE" | sk --ansi); then
+  echo "$out" | awk '{print $1}' | xargs -I{} git show {} -- "$INPUT_FILE"
+fi

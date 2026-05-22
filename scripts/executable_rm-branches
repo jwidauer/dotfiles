@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+echo "Updating remote references"
+git fetch --prune
+
+echo "Removing removed branches"
+git branch -vv | rg 'gone]' | awk '{print $1}' | xargs git branch -D

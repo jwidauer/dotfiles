@@ -1,0 +1,5 @@
+#!/bin/bash
+
+if out=$(git -c color.diff=always lg | sk --ansi --no-sort); then
+  echo "$out" | awk '{print $1}' | xargs git commit --fixup
+fi

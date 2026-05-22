@@ -1,0 +1,2 @@
+# Found out using: `ping artifactory.rd.sonova.com -c 2 -M do -s 1360`
+sudo ip link set eth0 mtu 1300

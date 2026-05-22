@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+# Get the first modified file from git status
+modified_file=$(git status --porcelain | rg ' M ' | head -n 1 | awk '{print $2}')
+
+if [ -z "$modified_file" ]; then
+  echo "No modified files found."
+  exit 1
+fi
+
+# Stage the modified file
+git add "$modified_file"

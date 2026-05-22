@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Runs the command given as an argument, until it fails
+# This is useful for testing memory corruption issues
+
+count=1
+while true; do
+  # export MALLOC_PERTURB_=$((RANDOM % 255 + 1))
+  echo "Run nr ${count}" # (MALLOC_PERTURB_=${MALLOC_PERTURB_})"
+  count=$((count+1))
+  "$@"
+done

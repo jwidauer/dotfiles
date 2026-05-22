@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+# This script fixes up the last (or nth last) commit that modified a specific input file
+# Usage: ./fixup-last <input-file> [n]
+# If n is provided, it fixes up the nth last commit instead of the last one.
+
+INPUT_FILE="${1:-$(git diff --cached --name-only | head -n 1)}"
+if [ -z "$INPUT_FILE" ]; then
+  echo "Error: No input file provided."
+  echo "Usage: $0 <input-file> [n]"
+  exit 1
+fi
+
+# Check that n is above 0 if provided
+# N is optional, default to 1
+N="${2:-1}"
+if ! [[ "$N" =~ ^[1-9][0-9]*$ ]]; then
+  echo "Error: n must be a positive integer."
+  exit 1
+fi
+
+# Ensure the input file has at least n commits
+COMMIT_COUNT=$(git log --pretty=tformat:%H -- "$INPUT_FILE" | wc -l)
+if [ "$COMMIT_COUNT" -lt "$N" ]; then
+  echo "Error: The file '$INPUT_FILE' has only $COMMIT_COUNT commits, but n is set to $N."
+  exit 1
+fi
+
+# Get the nth last commit that modified the input file
+LAST_COMMIT=$(git log -n "$N" --pretty=format:%H -- "$INPUT_FILE" | tail -n 1)
+
+# Get commit message for output
+COMMIT_MESSAGE=$(git log -1 --pretty=format:%s "$LAST_COMMIT")
+
+echo "Fixing up commit: $LAST_COMMIT - $COMMIT_MESSAGE"
+git commit --fixup "$LAST_COMMIT"
