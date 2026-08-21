@@ -9,6 +9,7 @@ alias gds='git diff --staged'
 alias glg='git lg'
 alias gsu='git submodule update --init --recursive'
 alias gpn='git push --set-upstream origin $(git branch --show-current)'
+alias gwl='git worktree list'
 
 # Use eza instead of ls
 alias ls='eza'
@@ -17,5 +18,10 @@ alias la='eza -a'
 alias l='eza -l'
 alias lh='eza -alhF'
 
+# Use zoxide instead of cd
+alias cd='z'
+
 # Use nvim easier
 alias v='nvim'
+
+complete -F _complete_alias "${!BASH_ALIASES[@]}"
