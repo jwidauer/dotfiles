@@ -114,6 +114,7 @@ GIT_PROMPT_THEME=Single_line_Dark
 PATH="$HOME/.npm-global/bin:$PATH"
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -130,3 +131,4 @@ eval "$(atuin init bash)"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(mise activate bash)"
