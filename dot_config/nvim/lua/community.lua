@@ -13,7 +13,6 @@ return {
   { import = "astrocommunity.pack.cmake" },
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.recipes.picker-lsp-mappings" },
 }
